@@ -23,6 +23,9 @@ const generateItemElement = function (item) {
         <button class='shopping-item-toggle js-item-toggle'>
           <span class='button-label'>check</span>
         </button>
+        <button class='shopping-item-edit js-item-edit'>
+          <span class='button-label'>edit</span>
+        </button>
         <button class='shopping-item-delete js-item-delete'>
           <span class='button-label'>delete</span>
         </button>
@@ -125,6 +128,14 @@ const handleDeleteItemClicked = function () {
     // Render the updated shopping list.
     render();
   });
+};
+
+const editListItemHtml = function () {
+  return `
+  <div class="edit-item">
+    <input type="text" placeholder="update item" class="list-item-update"></input>
+    <button type="submit" class="update-button"></button>
+  </div>`;
 };
 
 /**
