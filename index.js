@@ -1,11 +1,12 @@
 const store = {
   items: [
-    { id: cuid(), name: 'apples', checked: false },
-    { id: cuid(), name: 'oranges', checked: false },
-    { id: cuid(), name: 'milk', checked: true },
-    { id: cuid(), name: 'bread', checked: false }
+    { id: cuid(), name: 'apples', checked: false, edit: true },
+    { id: cuid(), name: 'oranges', checked: false, edit: true },
+    { id: cuid(), name: 'milk', checked: true, edit: true },
+    { id: cuid(), name: 'bread', checked: false, edit: true }
   ],
-  hideCheckedItems: false
+  hideCheckedItems: false,
+  editItems: false
 };
 
 const generateItemElement = function (item) {
@@ -138,6 +139,24 @@ const editListItemHtml = function () {
   </div>`;
 };
 
+const handleEditItemClicked = function () {
+  // Like in `handleItemCheckClicked`, 
+  // we use event delegation.
+  $('.js-shopping-list').on('click', '.js-item-edit', event => {
+    editListItemHtml();
+    // Get the index of the item in store.items.
+    // take value - what do we do with this ????
+    // Render the updated shopping list.
+
+    editListItem();
+    render();
+  });
+};
+
+const editListItem = function () {
+  const id = getItemIdFromElement(event.currentTarget);
+  $('.list-item-update').val();
+};
 /**
  * Toggles the store.hideCheckedItems property
  */
